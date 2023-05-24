@@ -64,6 +64,18 @@ class Player {
             console.log(`you got more fuel---${this.bonus}`);
         }
     }
+    removeObstacle(newObstacle){
+        if(newObstacle.positionY<0 - newObstacle.height){
+            newObstacle.domElement.remove();
+            //this.obsArr.shift();
+        }
+    }
+    removeBonus(newBonus){
+        if(newBonus.positionY<0 - newBonus.height){
+            newBonus.domElement.remove();
+            //this.bonusArr.shift();
+        }
+    }
 }
 
 class Obstacle {
@@ -93,6 +105,8 @@ class Obstacle {
         this.domElement.style.bottom = this.positionY + "vh";
     }
 
+    
+
 
 }
 class Bonus {
@@ -104,7 +118,7 @@ class Bonus {
         this.positionY = 80;
         this.domElement = null;
         this.createDomElement();
-        let score;
+        
     }
 
     createDomElement() {
@@ -123,11 +137,37 @@ class Bonus {
         this.domElement.style.bottom = this.positionY + "vh";
     }
 
-    displayScore() {
-
-    }
+    
 }
+
+class Score{
+    constructor(){
+    this.score=0;
+    this.width=10;
+    this.height=10;
+    this.positionX=45;
+    this.positionY=70;
+    this.createDomElement();
+    }
+    displayScore() {
+        score=this.bonus;
+        this.domElement.style.bottom=this.positionY+"vh";
+        }
+    createDomElement() {
+        this.domElement = document.createElement("div");
+        this.domElement.className = "score";
+        this.domElement.style.width = this.width + "vw";
+        this.domElement.style.height = this.height + "vh";
+        this.domElement.style.left = this.positionX + "vw";
+        this.domElement.style.bottom = this.positionY + "vh";
+        this.domElement.innerText = `SCORE...${this.bonus}`;
+        const parentElem = document.getElementById("board");
+        parentElem.appendChild(this.domElement);
+    }  
+}
+
 const player = new Player();
+const score = new Score;
 const obsArr = [];
 const bonusArr = [];
 
@@ -145,10 +185,11 @@ setInterval(() => {
     obsArr.forEach((element) => {
         element.moveDown();
         player.obsCollision(element);
-
+        player.removeObstacle(element);
     });
     bonusArr.forEach((element) => {
         player.bonusCollision(element);
+        player.removeBonus(element);
     });
 }, 60);
 
