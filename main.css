@@ -1,32 +1,29 @@
-body{
-padding: 0;
-margin: 0;
+body {
+  padding: 0;
+  margin: 0;
 }
 
-#board{
-    background-image: url(./images/background-1_0.png);
-    background-size: cover;
-    height: 600px;
-    position: relative;
-    
+#board {
+  background-image: url(./images/background-1_0.png);
+  background-size: cover;
+  height: 600px;
+  position: relative;
 }
-
-#player{
-    background-image: url(./images/player.svg);
-    transform: rotate(-90deg);
-    position: absolute;
-    
-    
-    
+#player {
+  background-image: url(./images/player.svg);
+  transform: rotate(-90deg);
+  position: absolute;
 }
-
-.obstacle{
-    background-image: url(./images/police.png);
-    transform: rotate(-90deg);
-    position: absolute;
-   }
-
-   .bonus{
-    background-image: url(./images/gasoline.svg);
-    position: absolute;
-   }
+.score{
+  background-color: white;
+  position: absolute;
+}
+.obstacle {
+  background-image: url(./images/police.png);
+  transform: rotate(-90deg);
+  position: absolute;
+}
+.bonus {
+  background-image: url(./images/gasoline.svg);
+  position: absolute;
+}

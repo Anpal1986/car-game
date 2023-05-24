@@ -55,12 +55,12 @@ class Player {
             newObstacle.positionY < player.positionY + player.height &&
             newObstacle.height + newObstacle.positionY > player.positionY) { console.log("game over"); }
     }
-    bonusCollision(newObstacle) {
+    bonusCollision(newBonus) {
         if (newBonus.positionX < player.positionX + player.width &&
             newBonus.positionX + newBonus.width > player.positionX &&
             newBonus.positionY < player.positionY + player.height &&
             newBonus.height + newBonus.positionY > player.positionY) {
-            this.bonus += 5;
+            this.bonus += 1;
             console.log(`you got more fuel---${this.bonus}`);
         }
     }
@@ -123,7 +123,7 @@ class Bonus {
         this.domElement.style.bottom = this.positionY + "vh";
     }
 
-    displayScore(){
+    displayScore() {
 
     }
 }
@@ -144,8 +144,11 @@ setInterval(() => {
 setInterval(() => {
     obsArr.forEach((element) => {
         element.moveDown();
-        //this.player.obsCollision(element);
-        //this.player.bonusCollision(element);
+        player.obsCollision(element);
+
+    });
+    bonusArr.forEach((element) => {
+        player.bonusCollision(element);
     });
 }, 60);
 
