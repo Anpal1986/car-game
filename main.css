@@ -4,9 +4,11 @@ body {
 }
 
 #board {
-  background-image: url(./images/background-1_0.png);
+  background-image: url(./images/background-1_0.png); 
+  -webkit-animation:slide 10s linear infinite;
+  
   background-size: cover;
-  height: 600px;
+  height: 45rem;  
   position: relative;
 }
 #player {
@@ -16,14 +18,31 @@ body {
 }
 .score{
   background-color: white;
-  position: absolute;
+  position: sticky;
   }
-.obstacle {
-  background-image: url(./images/police.png);
-  transform: rotate(-90deg);
-  position: absolute;
-}
+  .obstacle {
+    background-image: url(./images/police.png);
+    transform: rotate(-90deg);
+    position: absolute;
+  }
 .bonus {
-  background-image: url(./images/gasoline.svg);
+  background-image:url(./images/gasoline.svg);
   position: absolute;
 }
+
+.background{
+  background-image: url(./images/background-1_0.png);
+  position: relative;
+}
+
+@-webkit-keyframes 'slide' {
+	from {
+	  top: 0px;
+	  left:0px;
+	  }
+	to {
+	  top: 500px;
+	  left:0px;
+	}
+}
+git st
