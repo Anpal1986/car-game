@@ -9,8 +9,8 @@ class Player {
         this.createDomElement();
         this.createEventListener();
         this.bonus = 0;
-    }
 
+    }
     createDomElement() {
         this.domElement = document.createElement("div");
         this.domElement.id = "player";
@@ -21,25 +21,26 @@ class Player {
         const parentElem = document.getElementById("board");
         parentElem.appendChild(this.domElement);
     }
-
     moveLeft() {
         this.positionX--;
-        if(this.positionX<15 || this.positionX>80){
+        if (this.positionX < 15 || this.positionX > 80) {
             console.log("you are out of the road, you are losing points");
             this.bonus--;
-            if(this.bonus<0){
+            if (this.bonus < 0) {
                 console.log("game over");
+                location.href = './gameover.html';
             }
             console.log(this.bonus);
         }
     }
     moveRight() {
         this.positionX++;
-        if(this.positionX<15 || this.positionX>80){
+        if (this.positionX < 15 || this.positionX > 80) {
             console.log("you are out of the road, you are losing points");
             this.bonus--;
-            if(this.bonus<0){
+            if (this.bonus < 0) {
                 console.log("game over");
+                location.href = './gameover.html';
             }
             console.log(this.bonus);
         }
@@ -50,16 +51,14 @@ class Player {
     moveDown() {
         this.positionY--;
     }
-    
-    
     createEventListener() {
         document.addEventListener("keydown", (event) => {
             if (event.code === "ArrowRight") {
                 player.moveRight();
                 if (this.positionX > 95) {
-                this.positionX = 95;
+                    this.positionX = 95;
                 }
-                
+
                 this.domElement.style.left = this.positionX + "vw";
             }
             else if (event.code === "ArrowLeft") {
@@ -71,7 +70,7 @@ class Player {
             }
             else if (event.code === "ArrowUp") {
                 player.moveUp();
-                if (this.positionY >100) {
+                if (this.positionY > 100) {
                     this.positionY = 100;
                 }
                 this.domElement.style.bottom = this.positionY + "vh";
@@ -82,7 +81,7 @@ class Player {
                     this.positionY = 0;
                 }
                 this.domElement.style.bottom = this.positionY + "vh";
-            } 
+            }
         })
     }
     obsCollision(newObstacle) {
@@ -91,6 +90,7 @@ class Player {
             newObstacle.positionY < player.positionY + player.height &&
             newObstacle.height + newObstacle.positionY > player.positionY) {
             console.log("game over");
+            location.href = './gameover.html';
             this.bonus = 0;
         }
     }
@@ -137,7 +137,6 @@ class Background {
         this.domElement.style.bottom = this.positionY + "vh";
     }
 }
-
 class Obstacle {
     constructor() {
         this.width = 5;
@@ -169,7 +168,7 @@ class Bonus {
         this.positionX = 20 + Math.floor(Math.random() * 10 * 5.5);
         this.positionY = 80;
         this.domElement = null;
-        this.createDomElement();    
+        this.createDomElement();
 
     }
     createDomElement() {
@@ -187,14 +186,13 @@ class Bonus {
         this.domElement.style.bottom = this.positionY + "vh";
     }
 }
-
 class Score {
     constructor() {
-        this.score = 0;
-        this.width = 10;
-        this.height = 10;
-        this.positionX = 0;
-        this.positionY = 70;
+        this.score = 50;
+        this.width = 7;
+        this.height = 3;
+        this.positionX = 5;
+        this.positionY = 60;
         this.createDomElement();
     }
     displayScore() {
@@ -208,7 +206,7 @@ class Score {
         this.domElement.style.height = this.height + "vh";
         this.domElement.style.left = this.positionX + "vw";
         this.domElement.style.bottom = this.positionY + "vh";
-        this.domElement.innerText = `SCORE...${this.bonus}`;
+        this.domElement.innerText = "Score: " + this.score ;
         const parentElem = document.getElementById("board");
         parentElem.appendChild(this.domElement);
     }
