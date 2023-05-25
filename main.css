@@ -20,6 +20,10 @@ body {
   background-color: white;
   border-radius: 5px;
   border-color: black;
+  border-style: double;
+  border-width: thick;
+  text-align: center;
+  padding-top: 6px;
   width: 10px;
   height: 10px;
 }

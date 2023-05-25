@@ -8,7 +8,7 @@ class Player {
         this.domElement = null;
         this.createDomElement();
         this.createEventListener();
-        this.bonus = 0;
+        this.bonus = 10;
 
     }
     createDomElement() {
@@ -24,25 +24,19 @@ class Player {
     moveLeft() {
         this.positionX--;
         if (this.positionX < 15 || this.positionX > 80) {
-            console.log("you are out of the road, you are losing points");
             this.bonus--;
             if (this.bonus < 0) {
-                console.log("game over");
                 location.href = './gameover.html';
             }
-            console.log(this.bonus);
         }
     }
     moveRight() {
         this.positionX++;
         if (this.positionX < 15 || this.positionX > 80) {
-            console.log("you are out of the road, you are losing points");
             this.bonus--;
             if (this.bonus < 0) {
-                console.log("game over");
                 location.href = './gameover.html';
             }
-            console.log(this.bonus);
         }
     }
     moveUp() {
@@ -58,7 +52,6 @@ class Player {
                 if (this.positionX > 95) {
                     this.positionX = 95;
                 }
-
                 this.domElement.style.left = this.positionX + "vw";
             }
             else if (event.code === "ArrowLeft") {
@@ -100,7 +93,7 @@ class Player {
             newBonus.positionY < player.positionY + player.height &&
             newBonus.height + newBonus.positionY > player.positionY) {
             this.bonus += 1;
-            console.log(`you got more fuel---${this.bonus}`);
+            return this.bonus;
         }
     }
     removeObstacle(newObstacle) {
@@ -187,26 +180,26 @@ class Bonus {
     }
 }
 class Score {
-    constructor() {
-        this.score = 50;
+    constructor(points) {
         this.width = 7;
         this.height = 3;
         this.positionX = 5;
         this.positionY = 60;
-        this.createDomElement();
+        this.createDomElement(points);
+    
     }
-    displayScore() {
-        score = this.bonus;
+    displayScore(points) {
+        this.domElement.innerText = "Score: " + points ;
         this.domElement.style.bottom = this.positionY + "vh";
     }
-    createDomElement() {
+    createDomElement(points) {
         this.domElement = document.createElement("div");
         this.domElement.className = "score";
         this.domElement.style.width = this.width + "vw";
         this.domElement.style.height = this.height + "vh";
         this.domElement.style.left = this.positionX + "vw";
         this.domElement.style.bottom = this.positionY + "vh";
-        this.domElement.innerText = "Score: " + this.score ;
+        this.domElement.innerText = "Score: " + points ;
         const parentElem = document.getElementById("board");
         parentElem.appendChild(this.domElement);
     }
@@ -214,7 +207,7 @@ class Score {
 
 const player = new Player();
 const background = new Background();
-const score = new Score;
+const score = new Score(player.bonus);
 const obsArr = [];
 const bonusArr = [];
 const backgroundArr = [];
@@ -238,6 +231,7 @@ setInterval(() => {
     bonusArr.forEach((element) => {
         element.moveDown();
         player.bonusCollision(element);
+        score.displayScore(player.bonus);
         player.removeBonus(element);
     });
 }, 40);
