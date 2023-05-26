@@ -186,10 +186,10 @@ class Score {
         this.positionX = 5;
         this.positionY = 60;
         this.createDomElement(points);
-    
+
     }
     displayScore(points) {
-        this.domElement.innerText = "Score: " + points ;
+        this.domElement.innerText = "Score: " + points;
         this.domElement.style.bottom = this.positionY + "vh";
     }
     createDomElement(points) {
@@ -199,7 +199,7 @@ class Score {
         this.domElement.style.height = this.height + "vh";
         this.domElement.style.left = this.positionX + "vw";
         this.domElement.style.bottom = this.positionY + "vh";
-        this.domElement.innerText = "Score: " + points ;
+        this.domElement.innerText = "Score: " + points;
         const parentElem = document.getElementById("board");
         parentElem.appendChild(this.domElement);
     }
