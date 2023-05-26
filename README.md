@@ -1,15 +1,15 @@
-# Ttitle: Car-Crash Game
+# Title: Car-Crash Game
 
 This game is based on a yellow car that moves to take gasoline or avoid to crash the police, trying not to drive out the road.
 
 ## Project Description: 
 
-The project is about a car game with a moving background that consist on increase your score by taking bonus that appear randomly at the screen. The game over happens when you crash the police or you are out of points. 
+The project is about a car game with a moving background that consist on increasing your score by taking bonus that appear randomly at the screen. The game over happens when you crash the police or you are out of points. 
 
 ### Objective and technologies used: 
 Create the first project of my bootcamp in Ironhack using:
 
-*HTML, DOM, Javascript, CSS
+HTML, DOM, Javascript, CSS
 
 ### How do I play?
 
@@ -22,10 +22,10 @@ Its very simple! What do I see at the screen?:
 
 ##### Player:
 
-Uning your keyboard: 
+Using your keyboard: 
 * Pressing ->(right arrow) moves the player to the right
 * Pressing <-(left arrow) moves the player to the left
-* Pressing the up/down arrow moves the player up or down 
+* Pressing up/down arrow moves the player up or down 
 
 ##### Background:
 
